@@ -1,3 +1,3 @@
 export default function page() {
-	return <div>Manage Reservations</div>;
+	return <main>Manage Reservations</main>;
 }

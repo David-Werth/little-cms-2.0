@@ -1,3 +1,3 @@
 export default function page() {
-	return <div>Manage Orders</div>;
+	return <main>Manage Orders</main>;
 }
