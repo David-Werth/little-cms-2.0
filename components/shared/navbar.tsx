@@ -17,20 +17,20 @@ export default function Navbar() {
 			<ul className="px-10 h-full w-full flex gap-12 text-lg">
 				<Link
 					href="/"
-					className={`flex text-center items-center gap-2 hover:text-neutral-500 transition-colors ${
-						pathname === '/' ? 'text-neutral-500' : ''
+					className={`flex text-center items-center gap-2 hover:text-neutral-400 transition-colors ${
+						pathname === '/' ? 'text-neutral-400' : ''
 					}`}
 				>
 					<FontAwesomeIcon
 						icon={faChartLine}
-						className="h-5 hover:text-neutral-500"
+						className="h-5 hover:text-neutral-400"
 					/>
 					Dashboard
 				</Link>
 				<Link
 					href="/orders"
-					className={`flex text-center items-center gap-2 hover:text-neutral-500 transition-colors ${
-						pathname === '/orders' ? 'text-neutral-500' : ''
+					className={`flex text-center items-center gap-2 hover:text-neutral-400 transition-colors ${
+						pathname === '/orders' ? 'text-neutral-400' : ''
 					}`}
 				>
 					<FontAwesomeIcon icon={faCartShopping} className="h-5" />
@@ -38,8 +38,8 @@ export default function Navbar() {
 				</Link>
 				<Link
 					href="/menu"
-					className={`flex text-center items-center gap-2 hover:text-neutral-500 transition-colors ${
-						pathname === '/menu' ? 'text-neutral-500' : ''
+					className={`flex text-center items-center gap-2 hover:text-neutral-400 transition-colors ${
+						pathname === '/menu' ? 'text-neutral-400' : ''
 					}`}
 				>
 					<FontAwesomeIcon icon={faUtensils} className="h-5" />
@@ -47,8 +47,8 @@ export default function Navbar() {
 				</Link>
 				<Link
 					href="/reservations"
-					className={`flex text-center items-center gap-2 hover:text-neutral-500 transition-colors ${
-						pathname === '/reservations' ? 'text-neutral-500' : ''
+					className={`flex text-center items-center gap-2 hover:text-neutral-400 transition-colors ${
+						pathname === '/reservations' ? 'text-neutral-400' : ''
 					}`}
 				>
 					<FontAwesomeIcon icon={faChair} className="h-5" />
