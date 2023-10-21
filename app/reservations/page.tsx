@@ -1,3 +1,7 @@
 export default function page() {
-	return <main>Manage Reservations</main>;
+	return (
+		<main className="flex min-h-screen w-full flex-col items-center justify-between p-24">
+			reservations
+		</main>
+	);
 }
