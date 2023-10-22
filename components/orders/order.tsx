@@ -16,14 +16,21 @@ export default function Order({
 }) {
 	const convertedDate = o ? new Date(o?.date) : new Date();
 	const convertedDateString = convertedDate.toLocaleString();
+	const convertedTimeString = convertedDate.toLocaleTimeString();
 
 	return (
 		<Link href={`/orders/${o?._id}`}>
 			<div className={isOnDashboard ? dashboardStyle : defaultStyle}>
-				<p>{convertedDateString}</p>
+				{isOnDashboard ? (
+					<p className="justify-self-start">{convertedTimeString}</p>
+				) : (
+					<p>{convertedDateString}</p>
+				)}
 				<p>{o?.userDetails.street}</p>
-				<p>{o?.paymentMethod}</p>
-				<p className="justify-self-end">Total: ${o?.total}</p>
+				{!isOnDashboard && <p>{o?.paymentMethod}</p>}
+				<p className="justify-self-end">
+					{isOnDashboard ? null : 'Total: '}${o?.total}
+				</p>
 			</div>
 		</Link>
 	);

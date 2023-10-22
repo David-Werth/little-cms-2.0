@@ -18,7 +18,9 @@ export default function Reservation({
 		<Link href={`/reservations/${r?._id}`}>
 			<div className={isOnDashboard ? dashboardStyle : defaultStyle}>
 				{!isOnDashboard && <p>{r?.name}</p>}
-				<p>{r?.date.replace('T00:00:00.000Z', '')}</p>
+				<p className={isOnDashboard ? 'justify-self-start' : ''}>
+					{r?.date.replace('T00:00:00.000Z', '')}
+				</p>
 				<p>{r?.time}</p>
 				<p>{r?.guests}</p>
 				{!isOnDashboard && <p>{r?.occasion}</p>}
