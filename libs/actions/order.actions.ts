@@ -3,11 +3,10 @@
 import { Order } from '../models/orderModel';
 import connectMongoDB from '../mongodb';
 
-export async function submitOrder({ userDetails, cart, paymentMethod, total }) {
+export async function getOrders() {
 	try {
 		await connectMongoDB();
-
-		await Order.create({ userDetails, cart, paymentMethod, total });
+		return await JSON.parse(JSON.stringify(await Order.find()));
 	} catch (error) {
 		console.log(error);
 	}
