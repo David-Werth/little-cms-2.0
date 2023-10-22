@@ -6,10 +6,10 @@ export default async function page() {
 	const reservations = await getReservations();
 
 	return (
-		<main className="flex min-h-screen w-full flex-col items-center justify-between p-24">
-			<div className=" flex flex-col gap-8">
+		<main className="flex flex-col items-center justify-between w-full min-h-screen p-24">
+			<div className="flex flex-col gap-8">
 				{reservations.map((r: ReservationType) => {
-					return <Reservation r={r} key={r?._id} />;
+					return <Reservation r={r} key={r?._id} isOnDashboard={false} />;
 				})}
 			</div>
 		</main>

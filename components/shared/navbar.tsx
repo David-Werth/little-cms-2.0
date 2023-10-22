@@ -13,18 +13,15 @@ export default function Navbar() {
 	const pathname = usePathname();
 
 	return (
-		<nav className="fixed h-16 top-3 rounded-full shadow-neutral-200 bg-neutral-200 backdrop-blur-md border bg-opacity-5 border-neutral-500 text-neutral-200">
-			<ul className="px-10 h-full w-full flex gap-12 text-lg">
+		<nav className="fixed h-16 border rounded-full top-3 shadow-neutral-200 bg-neutral-200 backdrop-blur-md bg-opacity-5 border-neutral-500 text-neutral-200">
+			<ul className="flex w-full h-full gap-12 px-10 text-lg">
 				<Link
 					href="/"
 					className={`flex text-center items-center gap-2 hover:text-neutral-400 transition-colors ${
 						pathname === '/' ? 'text-neutral-400' : ''
 					}`}
 				>
-					<FontAwesomeIcon
-						icon={faChartLine}
-						className="h-5 hover:text-neutral-400"
-					/>
+					<FontAwesomeIcon icon={faChartLine} className="h-5" />
 					Dashboard
 				</Link>
 				<Link
