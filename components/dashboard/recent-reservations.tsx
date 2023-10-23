@@ -1,5 +1,4 @@
 import { getReservations } from '@/libs/actions/reservation.actions';
-import { ReservationType } from '@/libs/types/reservation';
 import Reservation from '../reservations/reservation';
 import Link from 'next/link';
 
@@ -21,7 +20,7 @@ export default async function RecentReservations() {
 					<p>Persons</p>
 				</div>
 				<div className="flex flex-col gap-2">
-					{reservations.slice(0, 3).map((r: ReservationType) => {
+					{reservations?.slice(0, 3).map((r) => {
 						return <Reservation r={r} key={r?._id} isOnDashboard />;
 					})}
 				</div>

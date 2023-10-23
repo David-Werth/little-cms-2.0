@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { getOrders } from '@/libs/actions/order.actions';
-import { OrderType } from '@/libs/types/order';
 import Order from '../orders/order';
 
 export default async function RecentOrders() {
@@ -21,7 +20,7 @@ export default async function RecentOrders() {
 					<p>Total</p>
 				</div>
 				<div className="flex flex-col gap-2">
-					{orders.slice(0, 3).map((o: OrderType) => {
+					{orders?.slice(0, 3).map((o) => {
 						return <Order o={o} key={o?._id} isOnDashboard />;
 					})}
 				</div>
