@@ -1,8 +1,6 @@
 import Order from '@/components/orders/order';
 import { getOrders } from '@/libs/actions/order.actions';
 
-import { OrderType } from '@/libs/types/order';
-
 export default async function page() {
 	const orders = await getOrders();
 
