@@ -13,7 +13,7 @@ export default function Navbar() {
 	const pathname = usePathname();
 
 	return (
-		<nav className="fixed h-16 border rounded-full top-3 shadow-neutral-200 bg-neutral-200 backdrop-blur-md bg-opacity-5 border-neutral-500 text-neutral-200">
+		<nav className=" z-50 fixed h-16 border rounded-full top-3 shadow-neutral-200 bg-neutral-200 backdrop-blur-md bg-opacity-5 border-neutral-500 text-neutral-200">
 			<ul className="flex w-full h-full gap-12 px-10 text-lg">
 				<Link
 					href="/"

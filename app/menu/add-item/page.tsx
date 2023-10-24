@@ -1,7 +1,9 @@
+import AddItemForm from '@/components/menu/add-item-form';
+
 export default async function page() {
 	return (
-		<main className="flex flex-col items-center justify-between w-full min-h-screen p-24">
-			<p className="text-neutral-200">create item</p>
+		<main className="flex flex-col items-center	 w-full min-h-screen p-24">
+			<AddItemForm />
 		</main>
 	);
 }
