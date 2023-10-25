@@ -8,5 +8,7 @@ This is a custom CMS plattform for the
 - Technologies Used: Next.js, TypeScript, MongoDB, Tailwind.css
 ### Demo: https://little-cms.davidwerth.com/
 - Demo account:
+  
   Username: admin
+  
   Password: admin 
