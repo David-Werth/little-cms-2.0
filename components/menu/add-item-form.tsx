@@ -2,6 +2,7 @@
 
 import { createMenuItem } from '@/libs/actions/menu.actions';
 import { useState } from 'react';
+import { UploadButton, UploadDropzone } from '../uploadthing/uploadthing';
 
 const initFormState = {
 	title: '',
@@ -39,6 +40,12 @@ export default function AddItemForm() {
 			category: formData.category,
 			img: formData.img,
 		});
+
+		setTitle('');
+		setPrice(0);
+		setDescription('');
+		setCategory('');
+		setImg('');
 	};
 
 	return (
@@ -101,8 +108,26 @@ export default function AddItemForm() {
 					<option value="drinks">Drinks</option>
 				</select>
 			</div>
-
-			{/* Add uploadthing for img */}
+			<div>
+				<p>Uploade Image</p>
+				<UploadDropzone
+					endpoint="imageUploader"
+					onClientUploadComplete={(res) => {
+						if (res) {
+							setImg(res[0].url);
+						}
+					}}
+					onUploadError={(error: Error) => {
+						alert(`Something went wrong! ${error.message}`);
+					}}
+				/>
+			</div>
+			<button
+				type="submit"
+				className="text-neutral-900 font-bold bg-[#F4CE14] py-3 px-6 rounded-full border-2 border-[#F4CE14] hover:text-neutral-200 hover:bg-transparent transition-colors"
+			>
+				Add Item
+			</button>
 		</form>
 	);
 }
