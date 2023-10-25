@@ -13,8 +13,6 @@ const initFormState = {
 };
 
 export default function AddItemForm() {
-	const [formData, setFormData] = useState(initFormState);
-
 	const [title, setTitle] = useState('');
 	const [price, setPrice] = useState(0);
 	const [description, setDescription] = useState('');
@@ -22,23 +20,18 @@ export default function AddItemForm() {
 	const [img, setImg] = useState('');
 
 	const handleFormChange = () => {
-		setFormData({
+		//validation
+	};
+
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		createMenuItem({
 			title,
 			price,
 			description,
 			category,
 			img,
-		});
-	};
-
-	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		createMenuItem({
-			title: formData.title,
-			price: formData.price,
-			description: formData.description,
-			category: formData.category,
-			img: formData.img,
 		});
 
 		setTitle('');
@@ -108,11 +101,12 @@ export default function AddItemForm() {
 					<option value="drinks">Drinks</option>
 				</select>
 			</div>
-			<div>
+			<div className="flex flex-col gap-4">
 				<p>Uploade Image</p>
-				<UploadDropzone
+				<UploadButton
 					endpoint="imageUploader"
 					onClientUploadComplete={(res) => {
+						console.log(res);
 						if (res) {
 							setImg(res[0].url);
 						}
