@@ -106,7 +106,6 @@ export default function AddItemForm() {
 				<UploadButton
 					endpoint="imageUploader"
 					onClientUploadComplete={(res) => {
-						console.log(res);
 						if (res) {
 							setImg(res[0].url);
 						}
