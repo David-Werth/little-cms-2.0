@@ -10,37 +10,53 @@ export default function EditItemForm({ i }: { i: MenuItemType | undefined }) {
 	const [price, setPrice] = useState(i?.price);
 	const [description, setDescription] = useState(i?.description);
 	const [category, setCategory] = useState(i?.category);
-	const [img, setImg] = useState('');
-
-	const handleFormChange = () => {
-		//validation
-	};
-
-	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-
-		// updateMenuItem({
-		// 	title,
-		// 	price,
-		// 	description,
-		// 	category,
-		// 	img,
-		// });
-
-		setTitle('');
-		setPrice(0);
-		setDescription('');
-		setCategory('');
-		setImg('');
-	};
+	const [img, setImg] = useState(i?.img);
+	const [isSpecial, setIsSpecial] = useState(i?.isSpecial ? i.isSpecial : false);
 
 	useEffect(() => {
 		setTitle(i?.title);
 		setPrice(i?.price);
 		setDescription(i?.description);
 		setCategory(i?.category);
-		setImg('');
-	});
+		setImg(i?.img);
+		setIsSpecial(i?.isSpecial ? i.isSpecial : false);
+	}, [i]);
+
+	const handleFormChange = () => {
+		//validation
+	};
+
+	const onOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.value === 'true') {
+			setIsSpecial(true);
+		} else if (e.target.value === 'false') {
+			setIsSpecial(false);
+		}
+	};
+
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		if (title && price && description && category && img) {
+			console.log({
+				_id: i?._id,
+				title,
+				price,
+				description,
+				category,
+				img,
+				isSpecial,
+			});
+			await updateMenuItem({
+				_id: i?._id,
+				title,
+				price,
+				description,
+				category,
+				img,
+				isSpecial,
+			});
+		}
+	};
 
 	return (
 		<form
@@ -48,6 +64,33 @@ export default function EditItemForm({ i }: { i: MenuItemType | undefined }) {
 			onChange={handleFormChange}
 			onSubmit={(e) => handleSubmit(e)}
 		>
+			<div className="flex flex-col gap-2">
+				<h2>Is this a current special?</h2>
+				<div className="flex justify-between">
+					<div className="flex gap-4">
+						<input
+							type="radio"
+							name="isSpecial"
+							id="true"
+							checked={isSpecial}
+							value="true"
+							onChange={(e) => onOptionChange(e)}
+						/>
+						<label htmlFor="true">Yes</label>
+					</div>
+					<div className="flex gap-4">
+						<input
+							type="radio"
+							name="isSpecial"
+							id="false"
+							checked={!isSpecial}
+							value="false"
+							onChange={(e) => onOptionChange(e)}
+						/>
+						<label htmlFor="false">No</label>
+					</div>
+				</div>
+			</div>
 			<div className="flex flex-col gap-2">
 				<label htmlFor="title">Title</label>
 				<input
