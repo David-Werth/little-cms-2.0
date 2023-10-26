@@ -14,7 +14,7 @@ const initItem = {
 	img: '',
 	isSpecial: false,
 };
-export default function page() {
+export default function Page() {
 	const pathname = usePathname();
 	const pathId = pathname.replace('/menu/', '');
 	const [menuItem, setMenuItem] = useState<MenuItemType | undefined>(initItem);
