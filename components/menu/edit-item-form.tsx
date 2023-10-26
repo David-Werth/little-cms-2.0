@@ -1,14 +1,15 @@
 'use client';
 
-import { createMenuItem } from '@/libs/actions/menu.actions';
-import { useState } from 'react';
+import { updateMenuItem } from '@/libs/actions/menu.actions';
+import { useEffect, useState } from 'react';
 import { UploadButton } from '../uploadthing/uploadthing';
+import { MenuItemType } from '@/libs/types/menu-item';
 
-export default function AddItemForm() {
-	const [title, setTitle] = useState('');
-	const [price, setPrice] = useState(0);
-	const [description, setDescription] = useState('');
-	const [category, setCategory] = useState('');
+export default function EditItemForm({ i }: { i: MenuItemType | undefined }) {
+	const [title, setTitle] = useState(i?.title);
+	const [price, setPrice] = useState(i?.price);
+	const [description, setDescription] = useState(i?.description);
+	const [category, setCategory] = useState(i?.category);
 	const [img, setImg] = useState('');
 
 	const handleFormChange = () => {
@@ -18,13 +19,13 @@ export default function AddItemForm() {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		createMenuItem({
-			title,
-			price,
-			description,
-			category,
-			img,
-		});
+		// updateMenuItem({
+		// 	title,
+		// 	price,
+		// 	description,
+		// 	category,
+		// 	img,
+		// });
 
 		setTitle('');
 		setPrice(0);
@@ -32,6 +33,14 @@ export default function AddItemForm() {
 		setCategory('');
 		setImg('');
 	};
+
+	useEffect(() => {
+		setTitle(i?.title);
+		setPrice(i?.price);
+		setDescription(i?.description);
+		setCategory(i?.category);
+		setImg('');
+	});
 
 	return (
 		<form
@@ -111,7 +120,7 @@ export default function AddItemForm() {
 				type="submit"
 				className="text-neutral-900 font-bold bg-[#F4CE14] py-3 px-6 rounded-full border-2 border-[#F4CE14] hover:text-neutral-200 hover:bg-transparent transition-colors"
 			>
-				Add Item
+				Save
 			</button>
 		</form>
 	);

@@ -17,6 +17,18 @@ export async function getAllMenuItems() {
 	}
 }
 
+export async function getMenuItem(id: string) {
+	try {
+		await connectMongoDB();
+
+		return (await JSON.parse(
+			JSON.stringify(await MenuItem.findById(id))
+		)) as MenuItemType;
+	} catch (error) {
+		console.log(error);
+	}
+}
+
 export async function createMenuItem({
 	category,
 	title,
@@ -46,6 +58,7 @@ export async function updateMenuItem({
 	description,
 	price,
 	img,
+	isSpecial,
 }: MenuItemType) {
 	try {
 		await connectMongoDB();
@@ -58,6 +71,7 @@ export async function updateMenuItem({
 				description: description,
 				price: price,
 				img: img,
+				isSpecial: isSpecial,
 			}
 		);
 	} catch (error) {
