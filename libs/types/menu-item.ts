@@ -5,4 +5,5 @@ export type MenuItemType = {
 	description: string;
 	price: number;
 	img: string;
+	isSpecial?: boolean;
 };
