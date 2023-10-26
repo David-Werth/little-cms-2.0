@@ -23,7 +23,7 @@ export default async function Page() {
 			<div className="grid grid-cols-4 gap-4 mb-4">
 				{menuItems?.map((i) => {
 					if (i.category === 'starters') {
-						return <MenuItem i={i} key={i?._id} />;
+						return <MenuItem i={i} key={i?._id} isOnDashBoard={false} />;
 					}
 				})}
 			</div>
@@ -31,7 +31,7 @@ export default async function Page() {
 			<div className="grid grid-cols-4 gap-4 mb-4">
 				{menuItems?.map((i) => {
 					if (i.category === 'mains') {
-						return <MenuItem i={i} key={i?._id} />;
+						return <MenuItem i={i} key={i?._id} isOnDashBoard={false} />;
 					}
 				})}
 			</div>
@@ -39,7 +39,7 @@ export default async function Page() {
 			<div className="grid grid-cols-4 gap-4 mb-4">
 				{menuItems?.map((i) => {
 					if (i.category === 'desserts') {
-						return <MenuItem i={i} key={i?._id} />;
+						return <MenuItem i={i} key={i?._id} isOnDashBoard={false} />;
 					}
 				})}
 			</div>
@@ -47,7 +47,7 @@ export default async function Page() {
 			<div className="grid grid-cols-4 gap-4 mb-4">
 				{menuItems?.map((i) => {
 					if (i.category === 'drinks') {
-						return <MenuItem i={i} key={i?._id} />;
+						return <MenuItem i={i} key={i?._id} isOnDashBoard={false} />;
 					}
 				})}
 			</div>

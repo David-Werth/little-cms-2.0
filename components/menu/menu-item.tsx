@@ -3,7 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { title } from 'process';
 
-export default function MenuItem({ i }: { i: MenuItemType }) {
+export default function MenuItem({
+	i,
+	isOnDashBoard,
+}: {
+	i: MenuItemType;
+	isOnDashBoard: boolean;
+}) {
 	return (
 		<Link
 			href={`/menu/${i._id}`}
@@ -21,9 +27,11 @@ export default function MenuItem({ i }: { i: MenuItemType }) {
 					<h2 className="text-lg font-bold">{i.title}</h2>
 					<p className="text-[#F97316]">${i.price}</p>
 				</div>
-				<div>
-					<p>{i.description}</p>
-				</div>
+				{!isOnDashBoard && (
+					<div>
+						<p>{i.description}</p>
+					</div>
+				)}
 			</div>
 		</Link>
 	);
