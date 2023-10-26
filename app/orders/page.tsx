@@ -1,7 +1,7 @@
 import Order from '@/components/orders/order';
 import { getOrders } from '@/libs/actions/order.actions';
 
-export default async function page() {
+export default async function Page() {
 	const orders = await getOrders();
 
 	return (

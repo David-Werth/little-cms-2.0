@@ -1,3 +1,3 @@
-export default async function page() {
+export default async function Page() {
 	return <div>id</div>;
 }

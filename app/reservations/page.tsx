@@ -1,8 +1,7 @@
 import Reservation from '@/components/reservations/reservation';
 import { getReservations } from '@/libs/actions/reservation.actions';
-import { ReservationType } from '@/libs/types/reservation';
 
-export default async function page() {
+export default async function Page() {
 	const reservations = await getReservations();
 
 	return (
