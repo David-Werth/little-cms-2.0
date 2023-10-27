@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import { UploadButton } from '../uploadthing/uploadthing';
 import { MenuItemType } from '@/libs/types/menu-item';
 import { usePathname } from 'next/navigation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const initItem = {
 	_id: '',
@@ -20,6 +22,8 @@ export default function EditItemForm() {
 	const pathname = usePathname();
 	const pathId = pathname.replace('/menu/', '');
 
+	const [isLoading, setIsLoading] = useState(true);
+
 	const [menuItem, setMenuItem] = useState<MenuItemType | undefined>(initItem);
 	const [title, setTitle] = useState(menuItem?.title);
 	const [price, setPrice] = useState(menuItem?.price);
@@ -29,19 +33,27 @@ export default function EditItemForm() {
 	const [isSpecial, setIsSpecial] = useState(menuItem?.isSpecial);
 
 	useEffect(() => {
+		setIsLoading(true);
+
 		(async () => {
 			const returnedItem: MenuItemType | undefined = await getMenuItem(pathId);
 			setMenuItem(returnedItem);
 		})();
+
+		setIsLoading(false);
 	}, []);
 
 	useEffect(() => {
+		setIsLoading(true);
+
 		setTitle(menuItem?.title);
 		setPrice(menuItem?.price);
 		setDescription(menuItem?.description);
 		setCategory(menuItem?.category);
 		setImg(menuItem?.img);
 		setIsSpecial(menuItem?.isSpecial);
+
+		setIsLoading(false);
 	}, [menuItem]);
 
 	const handleFormChange = () => {
@@ -58,6 +70,8 @@ export default function EditItemForm() {
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		setIsLoading(true);
+
 		if (title && price && description && category && img) {
 			await updateMenuItem({
 				_id: menuItem?._id,
@@ -69,6 +83,8 @@ export default function EditItemForm() {
 				isSpecial,
 			});
 		}
+
+		setIsLoading(false);
 	};
 
 	return (
@@ -173,10 +189,15 @@ export default function EditItemForm() {
 				/>
 			</div>
 			<button
+				disabled={isLoading}
 				type="submit"
-				className="text-neutral-900 font-bold bg-[#F4CE14] py-3 px-6 rounded-full border-2 border-[#F4CE14] hover:text-neutral-200 hover:bg-transparent transition-colors"
+				className="flex items-center justify-center text-neutral-900 font-bold bg-[#F4CE14] py-3 px-6 rounded-full disabled:cursor-not-allowed border-2 border-[#F4CE14] enabled:hover:text-neutral-200 enabled:hover:bg-transparent transition-colors"
 			>
-				Save
+				{isLoading ? (
+					<FontAwesomeIcon icon={faSpinner} className="animate-spin h-6" />
+				) : (
+					'Save'
+				)}
 			</button>
 		</form>
 	);
