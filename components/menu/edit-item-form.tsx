@@ -1,26 +1,48 @@
 'use client';
 
-import { updateMenuItem } from '@/libs/actions/menu.actions';
+import { getMenuItem, updateMenuItem } from '@/libs/actions/menu.actions';
 import { useEffect, useState } from 'react';
 import { UploadButton } from '../uploadthing/uploadthing';
 import { MenuItemType } from '@/libs/types/menu-item';
+import { usePathname } from 'next/navigation';
 
-export default function EditItemForm({ i }: { i: MenuItemType | undefined }) {
-	const [title, setTitle] = useState(i?.title);
-	const [price, setPrice] = useState(i?.price);
-	const [description, setDescription] = useState(i?.description);
-	const [category, setCategory] = useState(i?.category);
-	const [img, setImg] = useState(i?.img);
-	const [isSpecial, setIsSpecial] = useState(i?.isSpecial ? i.isSpecial : false);
+const initItem = {
+	_id: '',
+	category: '',
+	title: '',
+	description: '',
+	price: 0,
+	img: '',
+	isSpecial: false,
+};
+
+export default function EditItemForm() {
+	const pathname = usePathname();
+	const pathId = pathname.replace('/menu/', '');
+
+	const [menuItem, setMenuItem] = useState<MenuItemType | undefined>(initItem);
+	const [title, setTitle] = useState(menuItem?.title);
+	const [price, setPrice] = useState(menuItem?.price);
+	const [description, setDescription] = useState(menuItem?.description);
+	const [category, setCategory] = useState(menuItem?.category);
+	const [img, setImg] = useState(menuItem?.img);
+	const [isSpecial, setIsSpecial] = useState(menuItem?.isSpecial);
 
 	useEffect(() => {
-		setTitle(i?.title);
-		setPrice(i?.price);
-		setDescription(i?.description);
-		setCategory(i?.category);
-		setImg(i?.img);
-		setIsSpecial(i?.isSpecial ? i.isSpecial : false);
-	}, [i]);
+		(async () => {
+			const returnedItem: MenuItemType | undefined = await getMenuItem(pathId);
+			setMenuItem(returnedItem);
+		})();
+	}, []);
+
+	useEffect(() => {
+		setTitle(menuItem?.title);
+		setPrice(menuItem?.price);
+		setDescription(menuItem?.description);
+		setCategory(menuItem?.category);
+		setImg(menuItem?.img);
+		setIsSpecial(menuItem?.isSpecial);
+	}, [menuItem]);
 
 	const handleFormChange = () => {
 		//validation
@@ -37,17 +59,8 @@ export default function EditItemForm({ i }: { i: MenuItemType | undefined }) {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (title && price && description && category && img) {
-			console.log({
-				_id: i?._id,
-				title,
-				price,
-				description,
-				category,
-				img,
-				isSpecial,
-			});
 			await updateMenuItem({
-				_id: i?._id,
+				_id: menuItem?._id,
 				title,
 				price,
 				description,
@@ -62,7 +75,7 @@ export default function EditItemForm({ i }: { i: MenuItemType | undefined }) {
 		<form
 			className="text-neutral-200 flex flex-col gap-5"
 			onChange={handleFormChange}
-			onSubmit={(e) => handleSubmit(e)}
+			onSubmit={handleSubmit}
 		>
 			<div className="flex flex-col gap-2">
 				<h2>Is this a current special?</h2>
@@ -72,9 +85,9 @@ export default function EditItemForm({ i }: { i: MenuItemType | undefined }) {
 							type="radio"
 							name="isSpecial"
 							id="true"
-							checked={isSpecial}
-							value="true"
-							onChange={(e) => onOptionChange(e)}
+							// checked={isSpecial}
+							value={'true'}
+							onChange={onOptionChange}
 						/>
 						<label htmlFor="true">Yes</label>
 					</div>
@@ -83,9 +96,9 @@ export default function EditItemForm({ i }: { i: MenuItemType | undefined }) {
 							type="radio"
 							name="isSpecial"
 							id="false"
-							checked={!isSpecial}
-							value="false"
-							onChange={(e) => onOptionChange(e)}
+							// checked={!isSpecial}
+							value={'false'}
+							onChange={onOptionChange}
 						/>
 						<label htmlFor="false">No</label>
 					</div>
