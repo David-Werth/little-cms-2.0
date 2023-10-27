@@ -17,8 +17,8 @@ export default function Navbar() {
 	return (
 		<>
 			{isSignedIn && isLoaded ? (
-				<nav className=" z-50 fixed h-16 border rounded-full top-3 shadow-neutral-200 bg-neutral-200 backdrop-blur-md bg-opacity-5 border-neutral-500 text-neutral-200">
-					<ul className="flex w-full h-full gap-12 px-10 text-lg items-center">
+				<nav className=" z-50 max-w-full fixed h-16 border rounded-full top-3 shadow-neutral-200 bg-neutral-200 backdrop-blur-md bg-opacity-5 border-neutral-500 text-neutral-200">
+					<ul className="flex w-full h-full gap-9 lg:gap-12 px-10 text-lg items-center max-w-full">
 						<Link
 							href="/"
 							className={`flex text-center items-center gap-2 hover:text-neutral-400 transition-colors ${
@@ -26,7 +26,7 @@ export default function Navbar() {
 							}`}
 						>
 							<FontAwesomeIcon icon={faChartLine} className="h-5" />
-							Dashboard
+							<p className="hidden md:block">Dashboard</p>
 						</Link>
 						<Link
 							href="/orders"
@@ -35,7 +35,7 @@ export default function Navbar() {
 							}`}
 						>
 							<FontAwesomeIcon icon={faCartShopping} className="h-5" />
-							Orders
+							<p className="hidden md:block">Orders</p>
 						</Link>
 						<Link
 							href="/menu"
@@ -44,7 +44,7 @@ export default function Navbar() {
 							}`}
 						>
 							<FontAwesomeIcon icon={faUtensils} className="h-5" />
-							Menu
+							<p className="hidden md:block">Menu</p>
 						</Link>
 						<Link
 							href="/reservations"
@@ -53,7 +53,7 @@ export default function Navbar() {
 							}`}
 						>
 							<FontAwesomeIcon icon={faChair} className="h-5" />
-							Reservations
+							<p className="hidden md:block">Reservations</p>
 						</Link>
 						<div>
 							<UserButton afterSignOutUrl="/" />

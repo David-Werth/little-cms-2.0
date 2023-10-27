@@ -6,7 +6,7 @@ export default async function Specials() {
 	return (
 		<div className="flex flex-col gap-2 h-full p-5 border rounded-lg border-neutral-500 text-neutral-200">
 			<h2 className="text-lg font-bold">Specials</h2>
-			<div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
+			<div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-2">
 				{menuItems?.map((i) => {
 					if (i.isSpecial) {
 						return <MenuItem i={i} key={i._id} isOnDashBoard />;
