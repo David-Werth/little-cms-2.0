@@ -21,7 +21,7 @@ export default function Page() {
 			const returnedOrder: OrderType | undefined = await getOrder(pathId);
 			setOrder(returnedOrder);
 		})();
-	}, []);
+	}, [pathId]);
 
 	return (
 		<main className="w-full pt-24 px-10 pb-10 max-w-7xl grid md:grid-cols-2 grid-cols-1 gap-4">

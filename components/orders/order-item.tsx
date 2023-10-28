@@ -19,7 +19,7 @@ export default function OrderItem({
 			const returnedItem: MenuItemType | undefined = await getMenuItem(id);
 			setItem(returnedItem);
 		})();
-	}, []);
+	}, [id]);
 
 	return (
 		<div className="flex items-center justify-between gap-2 pr-6 rounded-md transition-all hover:border-neutral-600 border text-neutral-200 border-neutral-700 overflow-hidden">
