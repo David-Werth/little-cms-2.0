@@ -2,7 +2,6 @@
 
 import OrderItem from '@/components/orders/order-item';
 import { getOrder } from '@/libs/actions/order.actions';
-import { CartType } from '@/libs/types/cart';
 import { OrderType } from '@/libs/types/order';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -12,7 +11,6 @@ export default function Page() {
 	const pathId = pathname.replace('/orders/', '');
 
 	const [order, setOrder] = useState<OrderType | undefined>(undefined);
-	const [cart, setCart] = useState<CartType | undefined>();
 	const convertedDate = order ? new Date(order?.date) : new Date();
 	const convertedDateString = convertedDate.toLocaleString();
 
@@ -83,7 +81,6 @@ export default function Page() {
 					</div>
 					<div className="flex flex-col gap-2">
 						{order?.cart.map((i) => {
-							console.log(i);
 							return (
 								<OrderItem id={i.itemId} itemCount={i.itemCount} key={i.itemId} />
 							);
