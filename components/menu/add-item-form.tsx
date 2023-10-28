@@ -3,8 +3,11 @@
 import { createMenuItem } from '@/libs/actions/menu.actions';
 import { useState } from 'react';
 import { UploadButton } from '../uploadthing/uploadthing';
+import { useRouter } from 'next/navigation';
 
 export default function AddItemForm() {
+	const router = useRouter();
+
 	const [title, setTitle] = useState('');
 	const [price, setPrice] = useState(0);
 	const [description, setDescription] = useState('');
@@ -31,6 +34,7 @@ export default function AddItemForm() {
 		setDescription('');
 		setCategory('');
 		setImg('');
+		router.push('/menu');
 	};
 
 	return (

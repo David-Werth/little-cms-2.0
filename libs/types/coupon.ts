@@ -1,5 +1,5 @@
 export type CouponType = {
-	_id: string;
+	_id?: string;
 	code: string;
 	value: number;
 };

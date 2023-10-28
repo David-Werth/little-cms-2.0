@@ -1,5 +1,4 @@
 import { ReservationType } from '@/libs/types/reservation';
-import Link from 'next/link';
 
 const defaultStyle =
 	'grid grid-cols-6 text-left hover:-translate-y-1 rounded-md justify-between p-6 transition-all hover:translate-x-1 hover:border-neutral-600 border text-neutral-200 border-neutral-700';

@@ -78,3 +78,13 @@ export async function updateMenuItem({
 		console.log(error);
 	}
 }
+
+export async function deleteMenuItem(id: string) {
+	try {
+		await connectMongoDB();
+
+		await MenuItem.findByIdAndDelete(id);
+	} catch (error) {
+		console.log(error);
+	}
+}
