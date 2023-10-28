@@ -15,7 +15,7 @@ export default function Reservation({
 	isOnDashboard: boolean;
 }) {
 	return (
-		<Link href={`/reservations/${r?._id}`}>
+		<div>
 			<div className={isOnDashboard ? dashboardStyle : defaultStyle}>
 				{!isOnDashboard && <p>{r?.name}</p>}
 				<p className={isOnDashboard ? 'justify-self-start' : ''}>
@@ -26,6 +26,6 @@ export default function Reservation({
 				{!isOnDashboard && <p>{r?.occasion}</p>}
 				{!isOnDashboard && <p className="justify-self-end">{r?.email}</p>}
 			</div>
-		</Link>
+		</div>
 	);
 }
