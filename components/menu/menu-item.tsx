@@ -1,7 +1,6 @@
 import { MenuItemType } from '@/libs/types/menu-item';
 import Image from 'next/image';
 import Link from 'next/link';
-import { title } from 'process';
 
 export default function MenuItem({
 	i,
@@ -19,7 +18,7 @@ export default function MenuItem({
 				src={i.img}
 				width={500}
 				height={500}
-				alt={title}
+				alt={i.title}
 				className="object-cover w-full h-52"
 			/>
 			<div>
