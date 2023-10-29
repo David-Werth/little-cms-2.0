@@ -2,7 +2,7 @@ import { OrderType } from '@/libs/types/order';
 import Link from 'next/link';
 
 const defaultStyle =
-	'grid grid-cols-4 gap-4 text-left hover:-translate-y-1 rounded-md justify-between p-6 transition-all hover:translate-x-1 hover:border-neutral-600 border text-neutral-200 border-neutral-700';
+	'flex gap-4 md:gap-10 hover:-translate-y-1 rounded-md justify-between p-6 transition-all hover:translate-x-1 hover:border-neutral-600 border text-neutral-200 border-neutral-700';
 
 const dashboardStyle =
 	'grid grid-cols-3 text-right rounded-md justify-between p-4 transition-all hover:border-neutral-600 border text-neutral-200 border-neutral-700';
@@ -28,9 +28,7 @@ export default function Order({
 				)}
 				<p>{o?.userDetails.street}</p>
 				{!isOnDashboard && <p>{o?.paymentMethod}</p>}
-				<p className="justify-self-end">
-					{isOnDashboard ? null : 'Total: '}${o?.total}
-				</p>
+				<p className="justify-self-end">${o?.total}</p>
 			</div>
 		</Link>
 	);

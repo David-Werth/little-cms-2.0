@@ -8,7 +8,7 @@ export default async function Page() {
 	const menuItems = await getAllMenuItems();
 
 	return (
-		<main className="flex flex-col items-center justify-between w-full pt-24 px-10 pb-10 max-w-7xl box-border gap-5 text-neutral-200">
+		<main className="flex flex-col items-center justify-between w-full pt-24 px-5 lg:px-10 pb-10 max-w-7xl box-border gap-5 text-neutral-200">
 			<div className="flex justify-between w-full items-end">
 				<h2 className="text-2xl font-bold">Starters</h2>
 				<Link

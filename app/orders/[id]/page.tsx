@@ -22,7 +22,7 @@ export default function Page() {
 	}, [pathId]);
 
 	return (
-		<main className="w-full pt-24 px-10 pb-10 max-w-7xl grid md:grid-cols-2 grid-cols-1 gap-4">
+		<main className="w-full pt-24 px-5 lg:px-10 pb-10 max-w-7xl box-border grid md:grid-cols-2 grid-cols-1 gap-4">
 			<div className="flex flex-col h-full p-5 border rounded-lg gap-3 border-neutral-500 text-neutral-200">
 				<div className="flex justify-between">
 					<h2 className="text-lg font-bold">Customer Details</h2>
