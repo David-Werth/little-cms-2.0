@@ -83,7 +83,7 @@ export default function EditCouponForm() {
 					type="submit"
 					className="text-neutral-900 font-bold bg-[#F4CE14] py-3 px-6 rounded-full border-2 border-[#F4CE14] hover:text-neutral-200 hover:bg-transparent transition-colors"
 				>
-					Add Coupon
+					Save Coupon
 				</button>
 			</form>
 			<button
