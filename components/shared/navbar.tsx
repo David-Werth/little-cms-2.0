@@ -56,7 +56,7 @@ export default function Navbar() {
 							<p className="hidden md:block">Reservations</p>
 						</Link>
 						<div>
-							<UserButton afterSignOutUrl="/" />
+							<UserButton afterSignOutUrl="/sign-in" />
 						</div>
 					</ul>
 				</nav>
