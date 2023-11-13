@@ -1,14 +1,19 @@
 # little-cms
 
-## This is a custom CMS plattform for the
+## Overview
 
-- A full-stack CMS plattform for managing orders, reservations and the menu for the [Little Lemon Restaurant](https://github.com/David-Werth/little-lemon).
-- Technologies Used: Next.js, TypeScript, MongoDB, Tailwind.css
+This is a custom CMS platform for managing orders, reservations, and the menu for the [Little Lemon Restaurant](https://github.com/David-Werth/little-lemon).
 
-### Demo: https://little-cms.davidwerth.com/
+**Technologies Used:**
+- Next.js
+- TypeScript
+- MongoDB
+- Tailwind.css
 
-- Demo account:
+### Demo
 
-  Username: admin
+Visit the [little-cms Demo](https://little-cms.davidwerth.com/).
 
-  Password: admin
+- **Demo account:**
+  - **Username:** admin
+  - **Password:** admin
